@@ -6,7 +6,7 @@ public class Mensaje {
     String autorMensaje;
     String fechaMensaje;
 
-    public Mensaje(String mensaje, String autorMensaje, String fechaMensaje) {
+    public Mensaje() {
         this.mensaje = mensaje;
         this.autorMensaje = autorMensaje;
         this.fechaMensaje = fechaMensaje;
