@@ -19,7 +19,7 @@ public class MensajeServicio {
     }
 
     public static void listarMensaje(){
-
+        MensajeDao.leerMensajeDb();
     }
     public static void borrarMensaje(){
 
