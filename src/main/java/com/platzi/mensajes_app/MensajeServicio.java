@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class MensajeServicio {
 
-    public static void listarMensaje(){
+    public static void crearMensaje() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Write your message");
         String mensaje = sc.nextLine();
@@ -16,6 +16,10 @@ public class MensajeServicio {
         registro.setMensaje(mensaje);
         registro.setAutorMensaje(autor);
         MensajeDao.crearMensajeBd(registro);
+    }
+
+    public static void listarMensaje(){
+
     }
     public static void borrarMensaje(){
 
