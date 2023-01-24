@@ -1,5 +1,6 @@
 package com.platzi.mensajes_app;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MensajeServicio {
 
@@ -19,6 +20,13 @@ public class MensajeServicio {
     }
 
     public static void listarMensaje(){
+        ArrayList <Mensaje> mensajes = MensajeDao.leerMensajeDb();
+        for (Mensaje mensaje: mensajes) {
+            System.out.println("id: " + mensaje.getIdMensaje());
+            System.out.println("Mensaje: " + mensaje.getMensaje());
+            System.out.println("Autor: " + mensaje.getAutorMensaje());
+            System.out.println("Fecha de registros: " + mensaje.getFechaMensaje());
+        }
         MensajeDao.leerMensajeDb();
     }
     public static void borrarMensaje(){

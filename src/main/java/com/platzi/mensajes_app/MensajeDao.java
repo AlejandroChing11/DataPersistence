@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MensajeDao {
     public static void crearMensajeBd(Mensaje mensaje) {
@@ -25,18 +26,17 @@ public class MensajeDao {
             System.out.println("Connection error " + e);
         }
     }
-    public static void leerMensajeDb() {
+    public static ArrayList<Mensaje> leerMensajeDb() {
         Conexion dbConnect = new Conexion();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try (Connection conexion = dbConnect.getConnection()) {
-            String query="SELECT * FROM mensajes";
-            ps=conexion.prepareStatement(query);
-            rs=ps.executeQuery();
+        ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
+        try {
+            Connection connection = dbConnect.getConnection();
+            String query = "SELECT * FROM mensajes";
+            PreparedStatement ps = null;
+            ResultSet rs = null;
 
             while (rs.next()){
-                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("ID: " + rs.getInt("id_mensaje"));
                 System.out.println("Message: " + rs.getString("mensaje"));
                 System.out.println();
                 System.out.println("Autor " + rs.getString("autor_mensaje"));
@@ -45,11 +45,12 @@ public class MensajeDao {
                 System.out.println();
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException e){
             System.out.println(e);
-            System.out.println("");
-            System.out.println("No se pudieron recuperar los mensajes");
+            System.out.println("Couldn't charge messages");
         }
+
+        return mensajes;
     }
     public static void borrarMensajeDb(int idMensaje) {
 
