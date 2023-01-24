@@ -36,13 +36,14 @@ public class MensajeDao {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                System.out.println("ID: " + rs.getInt("id_mensaje"));
-                System.out.println("Message: " + rs.getString("mensaje"));
-                System.out.println();
-                System.out.println("Autor " + rs.getString("autor_mensaje"));
-                System.out.println();
-                System.out.println("Autor " + rs.getString("fecha_mensaje"));
-                System.out.println();
+                Mensaje mensaje = new Mensaje();
+                mensaje.setIdMensaje(rs.getInt("mensaje"));
+                System.out.println("");
+                mensaje.setMensaje(rs.getString("mensaje"));
+                System.out.println("");
+                mensaje.setAutorMensaje(rs.getString("autor_mensaje"));
+                System.out.println("");
+                mensaje.setFechaMensaje(rs.getString("fecha_mensaje"));
             }
 
         } catch (SQLException e){
