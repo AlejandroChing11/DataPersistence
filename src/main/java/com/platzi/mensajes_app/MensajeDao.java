@@ -32,8 +32,8 @@ public class MensajeDao {
         try {
             Connection connection = dbConnect.getConnection();
             String query = "SELECT * FROM mensajes";
-            PreparedStatement ps = null;
-            ResultSet rs = null;
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
                 System.out.println("ID: " + rs.getInt("id_mensaje"));
