@@ -37,14 +37,16 @@ public class MensajeDao {
 
             while (rs.next()){
                 Mensaje mensaje = new Mensaje();
-                mensaje.setIdMensaje(rs.getInt("mensaje"));
+                mensaje.setIdMensaje(rs.getInt("id_mensaje"));
                 System.out.println("");
                 mensaje.setMensaje(rs.getString("mensaje"));
                 System.out.println("");
                 mensaje.setAutorMensaje(rs.getString("autor_mensaje"));
                 System.out.println("");
                 mensaje.setFechaMensaje(rs.getString("fecha_mensaje"));
+                mensajes.add(mensaje);
             }
+
 
         } catch (SQLException e){
             System.out.println(e);
