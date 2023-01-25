@@ -80,6 +80,25 @@ public class MensajeDao {
 
     }
     public static void actualizarMensaje(Mensaje mensaje) {
-
+        Conexion dbConnect = new Conexion();
+        try (Connection conexion = dbConnect.getConnection()){
+            PreparedStatement ps = null;
+            try {
+                String query="UPDATE mensajes SET mensaje = ? WHERE id_mensaje = ?";
+                ps = conexion.prepareStatement(query);
+                ps.setString(1, mensaje.getMensaje());
+                ps.setInt(2, mensaje.getIdMensaje());
+                int countRowsUpdated = ps.executeUpdate();
+                if (countRowsUpdated != 0) {
+                    System.out.println("The message has been edited sucessfully");
+                } else {
+                    System.out.println("message wasn't found");
+                }
+            } catch (SQLException e) {
+                System.out.println("No se pudo actualizar");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
