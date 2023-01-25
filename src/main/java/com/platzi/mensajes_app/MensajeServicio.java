@@ -30,7 +30,10 @@ public class MensajeServicio {
         MensajeDao.leerMensajeDb();
     }
     public static void borrarMensaje(){
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el id del mensaje a borrrar");
+        int id_mensaje = scanner.nextInt();
+        MensajeDao.borrarMensajeDb(id_mensaje);
     }
     public static void editarMensaje(){
 
